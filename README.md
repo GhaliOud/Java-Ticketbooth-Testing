@@ -8,9 +8,9 @@ Features
 - Compare ticket booths for equality.
 
 How to Use
-1. Compile the program**:  
+1. Compile the program:  
    ```bash
    javac TicketboothDriver.java
 2. Run the program:
-  ```bash
+   ```bash
    java TicketboothDriver
