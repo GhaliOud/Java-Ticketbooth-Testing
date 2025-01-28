@@ -1,10 +1,4 @@
-//
-// Assignment 4
-// Written by: Ghali Oudghiri 40202095
-// For COMP 248 Section EC - Fall 2021
-// November-December 2021
-//
-// The purpose of this program is to create a ticketbooth application in which
+//// The purpose of this program is to create a ticketbooth application in which
 // the user is able to control practically everything provided to him in the menu
 // which includes the tickets, OPUS cards, etc.
 // Multiple classes with their own attributes and methods will be required as well as arrays of objects
