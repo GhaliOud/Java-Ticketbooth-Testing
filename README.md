@@ -13,4 +13,4 @@ How to Use
    javac TicketboothDriver.java
 2. Run the program:
   ```bash
-  java TicketboothDriver
+   java TicketboothDriver
