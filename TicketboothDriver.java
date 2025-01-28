@@ -2,13 +2,15 @@
 // the user is able to control practically everything provided to him in the menu
 // which includes the tickets, OPUS cards, etc.
 // Multiple classes with their own attributes and methods will be required as well as arrays of objects
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class TicketboothDriver {
 
     public static void main(String[] args) {
 
         Scanner keyIn = new Scanner(System.in);
-        
+        int menu = -1; // Initialize with a default invalid value
+
         System.out.println("--------------------------------------------------------------------");
         System.out.println("   Welcome to the Geek's OPUS TicketBooth Application");
         System.out.println("--------------------------------------------------------------------");
@@ -52,23 +54,34 @@ public class TicketboothDriver {
         boolean loop = true;
 		do
         {
+        boolean validInput = false; // Flag to indicate if input is valid        
+        while (!validInput) { // Loop until a valid number is entered
+            try {
         System.out.println("Please enter any button to continue....");
+        String continu = keyIn.nextLine();
         keyIn.nextLine();
-        keyIn.nextLine();
-        
-            System.out.println("\nWhat would you like to do?");
-            System.out.println("1. See the content of all Ticketbooth");
-            System.out.println("2. See the content of one Ticketbooth");
-            System.out.println("3. List Ticketbooths with same amount of tickets' values");
-            System.out.println("4. List Ticketbooths with same tickets amount");
-            System.out.println("5. List Ticketbooths with same amount of tickets values and same number of OPUS cards");
-            System.out.println("6. Add an OPUS card to an existing Ticketbooth");
-            System.out.println("7. Remove an existing OPUS card from a Ticketbooth");
-            System.out.println("8  Update the expiry date of an existing OPUS card");
-            System.out.println("9. Add Tickets to a Ticketbooth");
-            System.out.println("0. To quit");
-            System.out.print("\nPlease enter your choice and press <Enter>: ");
-            int menu = keyIn.nextInt();
+
+                System.out.println("\nWhat would you like to do?");
+                System.out.println("1. See the content of all Ticketbooth");
+                System.out.println("2. See the content of one Ticketbooth");
+                System.out.println("3. List Ticketbooths with same amount of tickets' values");
+                System.out.println("4. List Ticketbooths with same tickets amount");
+                System.out.println("5. List Ticketbooths with same amount of tickets values and same number of OPUS cards");
+                System.out.println("6. Add an OPUS card to an existing Ticketbooth");
+                System.out.println("7. Remove an existing OPUS card from a Ticketbooth");
+                System.out.println("8. Update the expiry date of an existing OPUS card");
+                System.out.println("9. Add Tickets to a Ticketbooth");
+                System.out.println("0. To quit");
+                System.out.print("\nPlease enter your choice and press <Enter>: ");
+                
+                menu = keyIn.nextInt(); // Try to read an integer
+                validInput = true; // If no exception, input is valid
+                
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input! Please enter a number between 0 and 9.");
+                keyIn.nextLine(); // Clear the invalid input from the scanner buffer
+            }
+        }
            
             //ticketbooth is initialized and declared to be used as a variable in the switch statements below
             int ticketbooth = 0;
@@ -900,7 +913,8 @@ public class TicketboothDriver {
                                 break;
                    
                     default:
-                    			System.out.println("Sorry that is not a valid choice. Try again.");
+                    			System.out.println("Sorry that is not a valid choice.");
+                                        loop = false;
                     			break;
                 }
         } while(loop);
